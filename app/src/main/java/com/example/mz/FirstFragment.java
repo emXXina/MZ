@@ -35,7 +35,7 @@ public class FirstFragment extends Fragment {
         }
         updateCounterView(view);
 
-        view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
+         view.findViewById(R.id.button_plus).setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View view) {
                   counter.addOne();

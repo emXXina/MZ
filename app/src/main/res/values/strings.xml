@@ -6,5 +6,7 @@
     <string name="plus">+1</string>
 
     <string name="standardCount">0</string>
+    <string name="minus">-1</string>
+    <string name="setCounter" >Zähler anpassen</string>
 
 </resources>
