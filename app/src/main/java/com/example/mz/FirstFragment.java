@@ -8,7 +8,6 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
 
 public class FirstFragment extends Fragment {
 
@@ -28,7 +27,7 @@ public class FirstFragment extends Fragment {
 
          updateCounterView(view);
 
-         view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
+         view.findViewById(R.id.button_plus).setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View view) {
                   counter.addOne();
