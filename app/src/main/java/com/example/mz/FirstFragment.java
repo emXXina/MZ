@@ -8,7 +8,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.fragment.NavHostFragment;
+
+import java.io.IOException;
+import java.util.Objects;
 
 public class FirstFragment extends Fragment {
 
@@ -26,14 +28,18 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(@NonNull View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-         updateCounterView(view);
+        try {
+            counter.setCount(CountSaver.readCount(requireContext()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        updateCounterView(view);
 
-         view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.button_first).setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View view) {
                   counter.addOne();
-                  updateCounterView(getView());
-
+                  updateCounterView(requireView());
               }
          });
     }
@@ -41,5 +47,11 @@ public class FirstFragment extends Fragment {
     private void updateCounterView(View view2) {
         TextView textView = view2.findViewById(R.id.textview_first);
         textView.setText(String.valueOf(counter.getCount()));
+
+        try {
+            CountSaver.saveCount(requireContext(), counter.getCount());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

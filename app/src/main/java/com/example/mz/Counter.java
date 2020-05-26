@@ -1,5 +1,9 @@
 package com.example.mz;
 
+import android.content.Context;
+
+import java.io.IOException;
+
 public class Counter {
 
     private short count;
@@ -14,6 +18,7 @@ public class Counter {
     public void subOne() {
         count--;
     }
+
     public short getCount() {
         return count;
     }
