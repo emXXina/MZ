@@ -35,13 +35,21 @@ public class FirstFragment extends Fragment {
         }
         updateCounterView(view);
 
-         view.findViewById(R.id.button_plus).setOnClickListener(new View.OnClickListener() {
+        view.findViewById(R.id.button_plus).setOnClickListener(new View.OnClickListener() {
               @Override
               public void onClick(View view) {
                   counter.addOne();
                   updateCounterView(requireView());
               }
-         });
+        });
+
+        view.findViewById(R.id.button_minus).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                counter.subOne();
+                updateCounterView(requireView());
+            }
+        });
     }
 
     private void updateCounterView(View view2) {

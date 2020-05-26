@@ -16,7 +16,9 @@ public class Counter {
     }
 
     public void subOne() {
-        count--;
+        if (count!=0){
+            count--;
+        }
     }
 
     public short getCount() {
