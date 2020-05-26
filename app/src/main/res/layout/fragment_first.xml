@@ -22,7 +22,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/button_plus"
+            android:id="@+id/button_minus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
@@ -37,7 +37,7 @@
             app:layout_constraintTop_toBottomOf="@id/textview_first" />
 
         <Button
-            android:id="@+id/button_minus"
+            android:id="@+id/button_plus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
