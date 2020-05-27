@@ -1,9 +1,11 @@
 package com.example.mz;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -48,6 +50,39 @@ public class FirstFragment extends Fragment {
             public void onClick(View view) {
                 counter.subOne();
                 updateCounterView(requireView());
+            }
+        });
+
+        view.findViewById(R.id.button_zaehler_anpassen).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getView().findViewById(R.id.button_zaehler_anpassen).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.button_minus).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.button_plus).setVisibility(View.INVISIBLE);
+                getView().findViewById(R.id.textview_first).setVisibility(View.INVISIBLE);
+
+                getView().findViewById(R.id.edit_counter).setVisibility(View.VISIBLE);
+            }
+        });
+
+        EditText editCounter = view.findViewById(R.id.edit_counter);
+        editCounter.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                String input = v.getText().toString();
+                short newCount = Short.parseShort(input);
+
+                counter.setCount(newCount);
+                updateCounterView(requireView());
+
+                getView().findViewById(R.id.button_zaehler_anpassen).setVisibility(View.VISIBLE);
+                getView().findViewById(R.id.button_minus).setVisibility(View.VISIBLE);
+                getView().findViewById(R.id.button_plus).setVisibility(View.VISIBLE);
+                getView().findViewById(R.id.textview_first).setVisibility(View.VISIBLE);
+
+                getView().findViewById(R.id.edit_counter).setVisibility(View.INVISIBLE);
+
+                return false;
             }
         });
     }
